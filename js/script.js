@@ -113,7 +113,7 @@ if (ww > smallWin) {
 
 
   atmosphere = new THREE.Mesh(
-    new THREE.SphereGeometry(220, 16, 16),
+    new THREE.SphereGeometry(190, 16, 16),
     new THREE.ShaderMaterial({
       vertexShader : `varying vec3 vertexNormal;
   
@@ -152,7 +152,7 @@ const environmentMapTexture = cubeTextureLoader.load(
  */
 scene.background = environmentMapTexture;
   // atmosphere.position.z = -1400;
-  // scene.add(atmosphere)
+  scene.add(atmosphere)
 
   
 
@@ -207,6 +207,8 @@ function run() {
       sphere.position.z += 50;
       console.log(sphere.position.z);
     }
+
+    sphere.rotation.y += 0.001
     if(!isWindowSmall){
      
 
@@ -256,8 +258,8 @@ function run() {
 
       // createStrokes(500); 
     }else{
-      var controls = new OrbitControls2(camera, renderer.domElement);
-      controls.enableZoom = false;
+      // var controls = new OrbitControls2(camera, renderer.domElement);
+      // controls.enableZoom = false;
       document.querySelector(".icon").style.display = "block";
       document.querySelector(".floater__btn").style.display = "flex";
         
