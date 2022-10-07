@@ -1,6 +1,17 @@
 import * as THREE from "./three.module.js";
 import { OrbitControls } from "./OrbitControls.js";
 import { OrbitControls2 } from "./OrbitControls_2.js";
+import * as dat from 'https://unpkg.com/three@0.126.1/examples/jsm/libs/dat.gui.module.js';
+
+// import atmosphereFragmentShader from "./shaders/atmosphereFragmentShader.glsl";
+// import atmosphereVertexShader from "./shaders/atmosphereVertexShader.glsl";
+
+import {
+  Lensflare,
+  LensflareElement,
+} from 'https://unpkg.com/three@0.126.1/examples/jsm/objects/Lensflare.js';
+
+import Stats from 'https://unpkg.com/three@0.126.1/examples/jsm/libs/stats.module.js';
 
 var isWindowSmall,
   maxRad,
@@ -20,35 +31,9 @@ var isWindowSmall,
   sphere;
   var material1;
 const smallWin = 1000;
-
 var positions = [];
 var ww = window.innerWidth,
   wh = window.innerHeight;
-if (ww > smallWin) {
-  maxRad = 500;
-  globeRad = 250;
-  minRad = 250;
-  isWindowSmall = false;
-  material1 = new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load("./img/earth_3.jpg"),
-    transparent: true,
-    opacity: 0,
-  });
-} else {
-  maxRad = 250;
-  globeRad = 150;
-  minRad = 150;
-  isWindowSmall = true;
-  material1 = new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load("./img/earth_mob2.jpg"),
-    transparent: true,
-    opacity: 0,
-  });
-}
-sphere = new THREE.Mesh(
-  new THREE.SphereGeometry(globeRad, 16, 16),
-  material1
-);
 renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector("#globe-canvas"),
   antialias: true,
@@ -87,12 +72,91 @@ strokesMaterial = new THREE.LineBasicMaterial({
   opacity: 0.3,
 });
 
+var atmosphere;
 galaxy = new THREE.Object3D();
 scene.add(galaxy);
 strokes = new THREE.LineSegments(new THREE.Geometry(), strokesMaterial);
 galaxy.add(strokes);
 dotStrokes = new THREE.Points(new THREE.Geometry(), dotsMaterial);
 galaxy.add(dotStrokes);
+
+if (ww > smallWin) {
+  maxRad = 500;
+  globeRad = 250;
+  minRad = 250;
+  isWindowSmall = false;
+  material1 = new THREE.MeshBasicMaterial({
+    map: new THREE.TextureLoader().load("./img/earth_3.jpg"),
+    transparent: true,
+    opacity: 0,
+    
+  });
+  sphere = new THREE.Mesh(
+    new THREE.SphereGeometry(globeRad, 16, 16),
+    material1
+  );
+  
+} else {
+  maxRad = 250;
+  globeRad = 150;
+  minRad = 150;
+  isWindowSmall = true;
+  material1 = new THREE.MeshBasicMaterial({
+    map: new THREE.TextureLoader().load("./img/earth_mob2.jpg"),
+    opacity: 0,
+    
+  });
+  sphere = new THREE.Mesh(
+    new THREE.SphereGeometry(globeRad, 32, 32),
+    material1
+  );
+
+
+  atmosphere = new THREE.Mesh(
+    new THREE.SphereGeometry(220, 16, 16),
+    new THREE.ShaderMaterial({
+      vertexShader : `varying vec3 vertexNormal;
+  
+      void main(){
+          vertexNormal = normal;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }
+  `,
+      fragmentShader : `varying vec3 vertexNormal;
+  
+      void main(){
+          float intensity = pow(0.5-dot(vertexNormal, vec3(0,0,1.0)),2.0);
+          gl_FragColor = vec4(0.3,0.6,1.0,1.0) * intensity;
+      }`,
+      blending: THREE.AdditiveBlending,
+      side: THREE.BackSide,
+    opacity: 0,
+  transparent: true,})
+      
+  );
+
+  const cubeTextureLoader = new THREE.CubeTextureLoader();
+const environmentMapTexture = cubeTextureLoader.load(
+  [
+    './img/px.png',
+    './img/nx.png',
+    './img/py.png',
+    './img/ny.png',
+    './img/pz.png',
+    './img/nz.png',
+  ]
+);
+
+/**
+ * Scene
+ */
+scene.background = environmentMapTexture;
+  // atmosphere.position.z = -1400;
+  // scene.add(atmosphere)
+
+  
+
+}
 
 function run() {
   for (var x = 0; x < 700; x++) {
@@ -137,10 +201,11 @@ function run() {
   var isSphereVisible = false;
   var render = function (a) {
     requestAnimationFrame(render);
-    scene.add(sphere);
+    // scene.add(sphere);
     
     if (sphere.position.z != 0) {
       sphere.position.z += 50;
+      console.log(sphere.position.z);
     }
     if(!isWindowSmall){
      
@@ -160,6 +225,11 @@ function run() {
       //   camera.position.y -= speedY;
       //   camera.position.z -= speedZ;
       // }
+
+      atmosphere.rotation.z =0.01*(600 -camera.position.z);
+      atmosphere.rotation.x =0.01*camera.position.x;
+      atmosphere.rotation.y =0.01*camera.position.y;
+      
     }
 
     if (material1.opacity < 1) {
@@ -174,6 +244,7 @@ function run() {
   };
 
   const myTimeout = setTimeout(() => {
+    scene.add(sphere)
     if (!isWindowSmall) {
       document.querySelector(".nav1").style.display = "flex";
       document.querySelector(".nav2").style.display = "flex";
@@ -370,3 +441,6 @@ hamBtn.addEventListener("click", () => {
 
   document.querySelector('.menu').classList.toggle('open')
 });
+
+
+
