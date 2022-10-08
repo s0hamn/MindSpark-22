@@ -57,9 +57,7 @@ canvas {
 
   margin: auto;
   display: none;
-  animation-name: logo-anim;
-  animation-duration: 1s;
-  animation-iteration-count: 1;
+  animation: logo-anim 0.65s;
   backface-visibility: hidden;
 }
 

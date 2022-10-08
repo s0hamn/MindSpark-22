@@ -1,7 +1,7 @@
 import * as THREE from "./three.module.js";
 import { OrbitControls } from "./OrbitControls.js";
 import { OrbitControls2 } from "./OrbitControls_2.js";
-import * as dat from 'https://unpkg.com/three@0.126.1/examples/jsm/libs/dat.gui.module.js';
+import * as dat from "https://unpkg.com/three@0.126.1/examples/jsm/libs/dat.gui.module.js";
 
 // import atmosphereFragmentShader from "./shaders/atmosphereFragmentShader.glsl";
 // import atmosphereVertexShader from "./shaders/atmosphereVertexShader.glsl";
@@ -9,9 +9,9 @@ import * as dat from 'https://unpkg.com/three@0.126.1/examples/jsm/libs/dat.gui.
 import {
   Lensflare,
   LensflareElement,
-} from 'https://unpkg.com/three@0.126.1/examples/jsm/objects/Lensflare.js';
+} from "https://unpkg.com/three@0.126.1/examples/jsm/objects/Lensflare.js";
 
-import Stats from 'https://unpkg.com/three@0.126.1/examples/jsm/libs/stats.module.js';
+import Stats from "https://unpkg.com/three@0.126.1/examples/jsm/libs/stats.module.js";
 
 var isWindowSmall,
   maxRad,
@@ -29,7 +29,7 @@ var isWindowSmall,
   dotsMaterial,
   strokesMaterial,
   sphere;
-  var material1;
+var material1;
 const smallWin = 1000;
 var positions = [];
 var ww = window.innerWidth,
@@ -89,14 +89,12 @@ if (ww > smallWin) {
     map: new THREE.TextureLoader().load("./img/earth_3.jpg"),
     transparent: true,
     opacity: 0,
-    
   });
   sphere = new THREE.Mesh(
     new THREE.SphereGeometry(globeRad, 16, 16),
     material1
   );
-  document.querySelector('.title-img').src = './img/logopc.png'
-
+  document.querySelector(".title-img").src = "./img/logopc.png";
 } else {
   maxRad = 250;
   globeRad = 150;
@@ -105,27 +103,25 @@ if (ww > smallWin) {
   material1 = new THREE.MeshBasicMaterial({
     map: new THREE.TextureLoader().load("./img/earth_mob2.jpg"),
     opacity: 0,
-    
   });
   sphere = new THREE.Mesh(
     new THREE.SphereGeometry(globeRad, 32, 32),
     material1
   );
 
-  document.querySelector('.title-img').src = './img/logomobile.png'
-
+  document.querySelector(".title-img").src = "./img/logomobile.png";
 
   atmosphere = new THREE.Mesh(
     new THREE.SphereGeometry(190, 16, 16),
     new THREE.ShaderMaterial({
-      vertexShader : `varying vec3 vertexNormal;
+      vertexShader: `varying vec3 vertexNormal;
   
       void main(){
           vertexNormal = normal;
           gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
       }
   `,
-      fragmentShader : `varying vec3 vertexNormal;
+      fragmentShader: `varying vec3 vertexNormal;
   
       void main(){
           float intensity = pow(0.5-dot(vertexNormal, vec3(0,0,1.0)),2.0);
@@ -133,32 +129,27 @@ if (ww > smallWin) {
       }`,
       blending: THREE.AdditiveBlending,
       side: THREE.BackSide,
-    opacity: 0,
-  transparent: true,})
-      
+      opacity: 0,
+      transparent: true,
+    })
   );
 
   const cubeTextureLoader = new THREE.CubeTextureLoader();
-const environmentMapTexture = cubeTextureLoader.load(
-  [
-    './img/px.png',
-    './img/nx.png',
-    './img/py.png',
-    './img/ny.png',
-    './img/pz.png',
-    './img/nz.png',
-  ]
-);
+  const environmentMapTexture = cubeTextureLoader.load([
+    "./img/px.png",
+    "./img/nx.png",
+    "./img/py.png",
+    "./img/ny.png",
+    "./img/pz.png",
+    "./img/nz.png",
+  ]);
 
-/**
- * Scene
- */
-scene.background = environmentMapTexture;
+  /**
+   * Scene
+   */
+  scene.background = environmentMapTexture;
   atmosphere.position.z = -1400;
-  scene.add(atmosphere)
-
-  
-
+  scene.add(atmosphere);
 }
 
 function run() {
@@ -205,28 +196,25 @@ function run() {
   var render = function (a) {
     requestAnimationFrame(render);
     // scene.add(sphere);
-    
+
     if (sphere.position.z != 0) {
       sphere.position.z += 50;
-      atmosphere.position.z += 50;
-      console.log(sphere.position.z);
     }
 
-    
-    if(!isWindowSmall){
-     
-
+    if (!isWindowSmall) {
       if (isExpanding) {
         expandSphere();
       } else {
         compressSphere();
       }
-    }else{
-      sphere.rotation.y += 0.001
-      atmosphere.rotation.z =camera.rotation.z
-      atmosphere.rotation.x =camera.rotation.x 
-      atmosphere.rotation.y =camera.rotation.y
-      
+    } else {
+      sphere.rotation.y += 0.001;
+      if (atmosphere.position.z != 0) {
+        atmosphere.position.z += 50;
+      }
+      atmosphere.rotation.z = camera.rotation.z;
+      atmosphere.rotation.x = camera.rotation.x;
+      atmosphere.rotation.y = camera.rotation.y;
     }
 
     if (material1.opacity < 1) {
@@ -241,7 +229,7 @@ function run() {
   };
 
   const myTimeout = setTimeout(() => {
-    scene.add(sphere)
+    scene.add(sphere);
     if (!isWindowSmall) {
       document.querySelector(".nav1").style.display = "flex";
       document.querySelector(".nav2").style.display = "flex";
@@ -251,20 +239,19 @@ function run() {
         controls.handleMouseMoveRotate(e);
       });
 
-      // createStrokes(500); 
-    }else{
+      // createStrokes(500);
+    } else {
       var controls = new OrbitControls2(camera, renderer.domElement);
       controls.enableZoom = false;
       document.querySelector(".floater__btn").style.display = "flex";
       document.querySelector(".icon-bg").style.display = "flex";
       document.querySelector(".ms-logo-mob").style.display = "flex";
       document.querySelector(".tagline").style.display = "flex";
-        
     }
+    document.querySelector(".title-img").style.display = "flex";
     document.querySelector(".loading-screen").style.display = "none";
 
     init();
-    document.querySelector(".title-img").style.display = "block";
 
     // const links_tag= document.querySelector('.navbar').getElementsByTagName('a');
     // console.log(links_tag)
@@ -308,10 +295,7 @@ function run() {
       }
     }
   }
-  
-  
 
-  
   if (!isWindowSmall) {
     sphere.rotation.x = 0.3;
     sphere.rotation.y = 3.19;
@@ -323,7 +307,6 @@ function run() {
     sphere.rotation.z = -0.08;
     sphere.position.z = -1400;
   }
-
 }
 
 run();
@@ -386,7 +369,6 @@ function createStrokes(radius) {
 //   run()
 // })
 window.addEventListener("resize", () => {
-
   if (ww > smallWin) {
     maxRad = 500;
     globeRad = 253;
@@ -411,7 +393,6 @@ window.addEventListener("resize", () => {
     document.querySelector(".socials").style.display = "none";
     document.querySelector(".floater__btn").style.display = "flex";
     document.querySelector(".icon-bg").style.display = "flex";
-    
   }
 });
 
@@ -423,12 +404,13 @@ hamBtn.addEventListener("click", () => {
     span.classList.toggle("open");
   });
 
-  document.querySelector('.menu').querySelector('ul').querySelectorAll('li').forEach((li)=>{
-    li.classList.toggle('open')
-  });
+  document
+    .querySelector(".menu")
+    .querySelector("ul")
+    .querySelectorAll("li")
+    .forEach((li) => {
+      li.classList.toggle("open");
+    });
 
-  document.querySelector('.menu').classList.toggle('open')
+  document.querySelector(".menu").classList.toggle("open");
 });
-
-
-
