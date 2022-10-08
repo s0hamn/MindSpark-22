@@ -52,22 +52,18 @@ canvas {
   
 }
 
-.title-img {
+
+
+.title-img img{
   width: 60%;
 
   margin: auto;
   display: none;
-  animation: logo-anim 0.65s;
+  animation: logo-anim 1s;
   backface-visibility: hidden;
 }
 
-.tagline{
-  display: none;
-  animation: opacity-anim 1s;
-  color: white;
-  padding: 0 40px;
-  font-size: 0.8em;
-}
+
 .navbar {
   display: flex;
   position: absolute;
@@ -725,7 +721,9 @@ svg {
   display: none;
 }
 
-
+.fadeInAnim{
+  animation: fadeIn 1s;
+}
 
 
 @media(max-width : 1000px){
@@ -744,9 +742,18 @@ svg {
 }
 
 
-  .title-img{
+.title-img{
+  width: 90vw;
+  height: 54.2vw;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  .title-img img{
     width: 90vw;
     max-width: 400px;
+    animation: logo-anim 0.7s;
   }
 
   .ms-logo-mob{
@@ -772,4 +779,16 @@ svg {
     height: 100%;
     width:100%;
   }
+
+  .tagline{
+    display: none;
+    /* animation: opacity-anim 1s; */
+    color: white;
+    padding: 0 40px;
+    font-size: 0.9em;
+    text-align: center;
+    opacity: 0;
+  }
+
+  
 }

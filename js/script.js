@@ -28,7 +28,8 @@ var isWindowSmall,
   dotStrokes,
   dotsMaterial,
   strokesMaterial,
-  sphere;
+  sphere,
+  loadTime;
 var material1;
 const smallWin = 1000;
 var positions = [];
@@ -94,7 +95,9 @@ if (ww > smallWin) {
     new THREE.SphereGeometry(globeRad, 16, 16),
     material1
   );
-  document.querySelector(".title-img").src = "./img/logopc.png";
+  document.querySelector(".title-img").querySelector('img').src = "./img/logopc.png";
+
+  loadTime = 2000
 } else {
   maxRad = 250;
   globeRad = 150;
@@ -112,7 +115,7 @@ if (ww > smallWin) {
   document.querySelector(".title-img").src = "./img/logomobile.png";
 
   atmosphere = new THREE.Mesh(
-    new THREE.SphereGeometry(190, 16, 16),
+    new THREE.SphereGeometry(170, 16, 16),
     new THREE.ShaderMaterial({
       vertexShader: `varying vec3 vertexNormal;
   
@@ -125,7 +128,7 @@ if (ww > smallWin) {
   
       void main(){
           float intensity = pow(0.5-dot(vertexNormal, vec3(0,0,1.0)),2.0);
-          gl_FragColor = vec4(0.3,0.6,1.0,1.0) * intensity;
+          gl_FragColor = vec4(1.0,1.0,1.0,1.0) * intensity;
       }`,
       blending: THREE.AdditiveBlending,
       side: THREE.BackSide,
@@ -150,6 +153,8 @@ if (ww > smallWin) {
   scene.background = environmentMapTexture;
   atmosphere.position.z = -1400;
   scene.add(atmosphere);
+
+  loadTime = 2000;
 }
 
 function run() {
@@ -193,12 +198,22 @@ function run() {
   var isCompressed = true;
   var isOpacity1 = false;
   var isSphereVisible = false;
+  var imgWidth = 0
   var render = function (a) {
     requestAnimationFrame(render);
     // scene.add(sphere);
 
     if (sphere.position.z != 0) {
       sphere.position.z += 50;
+      if(isWindowSmall){
+      //   document.querySelector('.title-img').querySelector('img').style.width = `${imgWidth}vw`;
+      // imgWidth += 3.3;
+      }
+    }else{
+      if(isWindowSmall){
+        document.querySelector('.tagline').classList.add("fadeInAnim");
+        document.querySelector('.tagline').style.opacity = 1;
+      }
     }
 
     if (!isWindowSmall) {
@@ -248,14 +263,14 @@ function run() {
       document.querySelector(".ms-logo-mob").style.display = "flex";
       document.querySelector(".tagline").style.display = "flex";
     }
-    document.querySelector(".title-img").style.display = "flex";
+    document.querySelector(".title-img").querySelector('img').style.display = "flex";
     document.querySelector(".loading-screen").style.display = "none";
 
     init();
 
     // const links_tag= document.querySelector('.navbar').getElementsByTagName('a');
     // console.log(links_tag)
-  }, 2000);
+  }, loadTime);
 
   // var orbit;
   // document.addEventListener('mousemove', function(e){
