@@ -324,18 +324,6 @@ function run() {
     sphere.position.z = -1400;
   }
 
-  // TweenMax.to(material1, 3, { opacity: 1 });
-
-  const light = new THREE.AmbientLight(0xffffff, 1);
-  scene.add(light);
-
-  // setTimeout(() => {
-  //   document.getElementById('container').innerHTML += `<div class="title">
-  //   <img src="./img/MS-22 Logo-01.png" alt="">
-
-  // </div>`
-  // isTextVisible = true;
-  // }, 600);
 }
 
 run();
