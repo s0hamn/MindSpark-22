@@ -53,18 +53,23 @@ canvas {
 }
 
 .title-img {
-  filter: invert(100%);
-  width: 40%;
+  width: 60%;
 
   margin: auto;
   display: none;
   animation-name: logo-anim;
-  /* animation-delay: 0s; */
   animation-duration: 1s;
   animation-iteration-count: 1;
   backface-visibility: hidden;
 }
 
+.tagline{
+  display: none;
+  animation: opacity-anim 1s;
+  color: white;
+  padding: 0 40px;
+  font-size: 0.8em;
+}
 .navbar {
   display: flex;
   position: absolute;
@@ -300,11 +305,11 @@ canvas {
 
 @keyframes logo-anim {
   from {
-    display: none;
+    /* display: none; */
     transform: scale(0);
   }
   to {
-    display: block;
+    /* display: block; */
     transform: scale(1);
   }
 }

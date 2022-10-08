@@ -95,7 +95,8 @@ if (ww > smallWin) {
     new THREE.SphereGeometry(globeRad, 16, 16),
     material1
   );
-  
+  document.querySelector('.title-img').src = './img/logopc.png'
+
 } else {
   maxRad = 250;
   globeRad = 150;
@@ -110,6 +111,8 @@ if (ww > smallWin) {
     new THREE.SphereGeometry(globeRad, 32, 32),
     material1
   );
+
+  document.querySelector('.title-img').src = './img/logomobile.png'
 
 
   atmosphere = new THREE.Mesh(
@@ -255,11 +258,13 @@ function run() {
       document.querySelector(".floater__btn").style.display = "flex";
       document.querySelector(".icon-bg").style.display = "flex";
       document.querySelector(".ms-logo-mob").style.display = "flex";
+      document.querySelector(".tagline").style.display = "flex";
         
     }
     document.querySelector(".loading-screen").style.display = "none";
-    document.querySelector(".title-img").style.display = "block";
+
     init();
+    document.querySelector(".title-img").style.display = "block";
 
     // const links_tag= document.querySelector('.navbar').getElementsByTagName('a');
     // console.log(links_tag)
@@ -417,7 +422,7 @@ window.addEventListener("resize", () => {
     document.querySelector(".nav2").style.display = "none";
     document.querySelector(".socials").style.display = "none";
     document.querySelector(".floater__btn").style.display = "flex";
-    document.querySelector(".hamburger").style.display = "block";
+    document.querySelector(".icon-bg").style.display = "flex";
     
   }
 });
