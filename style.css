@@ -541,18 +541,31 @@ svg {
   animation: opacity-anim 1s;
 } */
 
-.icon{
+.icon-bg{
   display: none;
-  animation: opacity-anim 1s;
   position: absolute;
-  padding: 20px;
-  z-index: 3;
-  border-radius: 50%;
-  width: 50px;
-  height: 40px;
-  border: 0;
+  background-color: #272727;
+  width: 60px;
+  height: 60px;
+  z-index: 2;
+  padding: 10px;
   top: 10px;
   right: 10px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  animation: opacity-anim 1s;
+
+}
+
+.icon{
+  position: absolute;
+  /* padding: 20px; */
+  z-index: 3;
+  border-radius: 50%;
+  width: 35px;
+  height: 30px;
+  border: 0;
   outline: none;
   cursor: pointer;
 
@@ -560,14 +573,14 @@ svg {
 
 .rectangle{
   position: absolute;
-  height: 5px;
+  height: 4px;
   background: #009ffd;
   border-radius: 4px;
   transition: all 0.65s;
 }
 
 .rectangle--small{
-  width: 25px;
+  width: 17.5px;
 }
 
 .rectangle--top{
@@ -578,7 +591,7 @@ svg {
 .rectangle--middle{
   top: 50%;
   left: 0;
-  width: 50px;
+  width: 35px;
   transform: translateY(-50%);
 }
 
@@ -591,7 +604,7 @@ svg {
 
 .rectangle--top.open{
   background: white;
-  transform: translateX(9px)  rotate(45deg);
+  transform: translateX(6px)  rotate(45deg);
 }
 .rectangle--middle.open{
   background: white;
@@ -599,7 +612,7 @@ svg {
 }
 .rectangle--bottom.open{
   background: white;
-  transform: translateX(-9px) rotate(45deg);
+  transform: translateX(-6px) rotate(45deg);
 }
 .menu{
   overflow: hidden;
@@ -639,28 +652,7 @@ svg {
   font-size: 1.5em;
   color: #6adefa;
 }
-@media(max-width : 1000px){
-  canvas{
-    z-index: 1;
-  }
-  
-.title{
-  top: 50%;
-    transform: translateY(-50%);
-}
 
-.menu ul li.open{
-  animation: glitch 1s;
-  animation-delay: 0.5s;
-}
-
-
-  .title-img{
-    width: 90vw;
-    max-width: 400px;
-  }
-  
-}
 
 /* mobile globe */
 
@@ -726,3 +718,55 @@ svg {
   }
 }
 
+.ms-logo-mob{
+  display: none;
+}
+
+
+
+
+@media(max-width : 1000px){
+  canvas{
+    z-index: 1;
+  }
+  
+.title{
+  top: 50%;
+    transform: translateY(-50%);
+}
+
+.menu ul li.open{
+  animation: glitch 1s;
+  animation-delay: 0.5s;
+}
+
+
+  .title-img{
+    width: 90vw;
+    max-width: 400px;
+  }
+
+  .ms-logo-mob{
+    position: absolute;
+    background: #272727;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    z-index: 2;
+    top: 10px;
+    left: 10px;
+    display: none;
+    animation: opacity-anim 1s;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ms-logo-mob a{
+  height: 100%;
+  width: 100%;
+  }
+  .ms-logo-mob img{
+    height: 100%;
+    width:100%;
+  }
+}

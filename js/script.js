@@ -151,7 +151,7 @@ const environmentMapTexture = cubeTextureLoader.load(
  * Scene
  */
 scene.background = environmentMapTexture;
-  // atmosphere.position.z = -1400;
+  atmosphere.position.z = -1400;
   scene.add(atmosphere)
 
   
@@ -205,10 +205,11 @@ function run() {
     
     if (sphere.position.z != 0) {
       sphere.position.z += 50;
+      atmosphere.position.z += 50;
       console.log(sphere.position.z);
     }
 
-    sphere.rotation.y += 0.001
+    
     if(!isWindowSmall){
      
 
@@ -218,19 +219,10 @@ function run() {
         compressSphere();
       }
     }else{
-      // if(camera.position.x != 0 || camera.position.y != 0 || camera.position.z != 600){
-      //   var speedX = camera.position.x/100;
-      //   var speedY = camera.position.y/100
-      //   var speedZ = (camera.position.z-600)/100
-
-      //   camera.position.x -= speedX;
-      //   camera.position.y -= speedY;
-      //   camera.position.z -= speedZ;
-      // }
-
-      atmosphere.rotation.z =0.01*(600 -camera.position.z);
-      atmosphere.rotation.x =0.01*camera.position.x;
-      atmosphere.rotation.y =0.01*camera.position.y;
+      sphere.rotation.y += 0.001
+      atmosphere.rotation.z =camera.rotation.z
+      atmosphere.rotation.x =camera.rotation.x 
+      atmosphere.rotation.y =camera.rotation.y
       
     }
 
@@ -258,10 +250,11 @@ function run() {
 
       // createStrokes(500); 
     }else{
-      // var controls = new OrbitControls2(camera, renderer.domElement);
-      // controls.enableZoom = false;
-      document.querySelector(".icon").style.display = "block";
+      var controls = new OrbitControls2(camera, renderer.domElement);
+      controls.enableZoom = false;
       document.querySelector(".floater__btn").style.display = "flex";
+      document.querySelector(".icon-bg").style.display = "flex";
+      document.querySelector(".ms-logo-mob").style.display = "flex";
         
     }
     document.querySelector(".loading-screen").style.display = "none";
