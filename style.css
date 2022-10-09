@@ -63,16 +63,7 @@ canvas {
   backface-visibility: hidden;
 }
 
-.tagline{
-  position: absolute;
-  color: white;
-  display: none;
-  animation: opacity-anim 1s;
-  top: 110%;
-  padding: 0 10vw;
-  text-align: center;
-  
-}
+
 
 
 .navbar {
@@ -737,6 +728,18 @@ svg {
 }
 
 
+@media(min-width : 1000px){
+.tagline{
+  position: absolute;
+  color: white;
+  display: none;
+  animation: opacity-anim 1s;
+  top: 110%;
+  padding: 0 10vw;
+  text-align: center;
+  
+}
+}
 @media(max-width : 1000px){
   canvas{
     z-index: 1;
@@ -792,6 +795,7 @@ svg {
   }
 
   .tagline{
+    position: static;
     display: none;
     /* animation: opacity-anim 1s; */
     color: white;

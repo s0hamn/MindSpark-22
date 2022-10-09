@@ -318,9 +318,9 @@ function run() {
     sphere.rotation.z = -0.08;
     sphere.position.z = -1400;
   } else {
-    sphere.rotation.x = 0.3;
-    sphere.rotation.y = 3.36;
-    sphere.rotation.z = -0.08;
+    // sphere.rotation.x = 0.3;
+    // sphere.rotation.y = 3.36;
+    // sphere.rotation.z = -0.08;
     sphere.position.z = -1400;
   }
 }
@@ -401,7 +401,7 @@ window.addEventListener("resize", () => {
     document.querySelector(".nav2").style.display = "flex";
     document.querySelector(".socials").style.display = "flex";
     document.querySelector(".floater__btn").style.display = "none";
-    document.querySelector(".hamburger").style.display = "none";
+    document.querySelector(".icon-bg").style.display = "none";
     createStrokes(300);
   } else {
     document.querySelector(".nav1").style.display = "none";
