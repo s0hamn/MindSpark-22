@@ -63,6 +63,17 @@ canvas {
   backface-visibility: hidden;
 }
 
+.tagline{
+  position: absolute;
+  color: white;
+  display: none;
+  animation: opacity-anim 1s;
+  top: 110%;
+  padding: 0 10vw;
+  text-align: center;
+  
+}
+
 
 .navbar {
   display: flex;

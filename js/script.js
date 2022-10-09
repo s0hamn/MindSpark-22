@@ -306,6 +306,7 @@ function run() {
         const socials = document.querySelector(".socials");
         socials.classList.add("social-animation");
         socials.style.display = "flex";
+        document.querySelector('.tagline').style.display = "block";
         isCompressed = false;
       }
     }
