@@ -733,7 +733,7 @@ svg {
   position: absolute;
   color: white;
   display: none;
-  animation: opacity-anim 1s;
+  animation: opacity-anim 1s, glitch 1s 1s;
   top: 110%;
   padding: 0 10vw;
   text-align: center;
@@ -797,7 +797,7 @@ svg {
   .tagline{
     position: static;
     display: none;
-    /* animation: opacity-anim 1s; */
+    /* animation: glitch 1s 1s; */
     color: white;
     padding: 0 40px;
     font-size: 0.9em;

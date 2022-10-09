@@ -402,6 +402,8 @@ window.addEventListener("resize", () => {
     document.querySelector(".socials").style.display = "flex";
     document.querySelector(".floater__btn").style.display = "none";
     document.querySelector(".icon-bg").style.display = "none";
+    document.querySelector(".title-img").querySelector('img').src = "./img/logopc.png";
+
     createStrokes(300);
   } else {
     document.querySelector(".nav1").style.display = "none";
@@ -409,6 +411,8 @@ window.addEventListener("resize", () => {
     document.querySelector(".socials").style.display = "none";
     document.querySelector(".floater__btn").style.display = "flex";
     document.querySelector(".icon-bg").style.display = "flex";
+    document.querySelector(".title-img").querySelector('img').src = "./img/logomobile.png";
+
   }
 });
 
