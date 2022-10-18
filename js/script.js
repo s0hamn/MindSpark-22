@@ -1,17 +1,6 @@
 import * as THREE from "./three.module.js";
 import { OrbitControls } from "./OrbitControls.js";
 import { OrbitControls2 } from "./OrbitControls_2.js";
-import * as dat from "https://unpkg.com/three@0.126.1/examples/jsm/libs/dat.gui.module.js";
-
-// import atmosphereFragmentShader from "./shaders/atmosphereFragmentShader.glsl";
-// import atmosphereVertexShader from "./shaders/atmosphereVertexShader.glsl";
-
-import {
-  Lensflare,
-  LensflareElement,
-} from "https://unpkg.com/three@0.126.1/examples/jsm/objects/Lensflare.js";
-
-import Stats from "https://unpkg.com/three@0.126.1/examples/jsm/libs/stats.module.js";
 
 var isWindowSmall,
   maxRad,
@@ -193,12 +182,8 @@ function run() {
   var radius = 25;
   var i = 0;
   var j = 0;
-  var isTextVisible = false;
   var isExpanding = true;
   var isCompressed = true;
-  var isOpacity1 = false;
-  var isSphereVisible = false;
-  var imgWidth = 0
   var render = function (a) {
     requestAnimationFrame(render);
     // scene.add(sphere);
@@ -271,24 +256,6 @@ function run() {
     // const links_tag= document.querySelector('.navbar').getElementsByTagName('a');
     // console.log(links_tag)
   }, loadTime);
-
-  // var orbit;
-  // document.addEventListener('mousemove', function(e){
-  //     let scale = -0.001;
-  //     orbit.rotateY( e.movementX * scale );
-  //     orbit.rotateX( e.movementY * scale );
-  //     orbit.rotation.z = 0; //this is important to keep the camera level..
-  // })
-
-  // //the camera rotation pivot
-  // orbit = new THREE.Object3D();
-  // orbit.rotation.order = "YXZ"; //this is important to keep level, so Z should be the last axis to rotate in order...
-  // orbit.position.copy(new THREE.Vector3(0, 0, 600));
-  // scene.add(orbit );
-
-  // let cameraDistance = 1;
-  // camera.position.z = cameraDistance;
-  // orbit.add( camera );
   function expandSphere() {
     if (radius < maxRad) {
       radius += 10;
@@ -373,17 +340,8 @@ function createStrokes(radius) {
   dotStrokes.geometry = dots;
   dotStrokes.geometry.verticesNeedUpdate = true;
 
-  //   if(true){
-
-  //   } else {
-  //     dotsMaterial.opacity = 0;
-  //   }
-
   renderer.setClearColor(new THREE.Color("#000000"));
 }
-// window.addEventListener('resize', ()=>{
-//   run()
-// })
 window.addEventListener("resize", () => {
   if (ww > smallWin) {
     maxRad = 500;
