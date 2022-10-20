@@ -345,8 +345,8 @@ function createStrokes(radius) {
 window.addEventListener("resize", () => {
   if (ww > smallWin) {
     maxRad = 500;
-    globeRad = 250;
-    minRad = 250;
+    globeRad = 315;
+    minRad = 315;
     isWindowSmall = false;
   } else {
     maxRad = 250;
