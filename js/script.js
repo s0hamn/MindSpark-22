@@ -46,7 +46,7 @@ loader.crossOrigin = "";
 var loader2 = new THREE.TextureLoader();
 loader2.crossOrigin = "";
 var dotTexture = loader2.load(
-  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/127738/dotTexture.png"
+  "./img/dot.png"
 );
 dotsMaterial = new THREE.PointsMaterial({
   size: 6,
@@ -72,8 +72,8 @@ galaxy.add(dotStrokes);
 
 if (ww > smallWin) {
   maxRad = 500;
-  globeRad = 250;
-  minRad = 250;
+  globeRad = 303;
+  minRad = 303;
   isWindowSmall = false;
   material1 = new THREE.MeshBasicMaterial({
     map: new THREE.TextureLoader().load("./img/earth_3.jpg"),
@@ -86,7 +86,7 @@ if (ww > smallWin) {
   );
   document.querySelector(".title-img").querySelector('img').src = "./img/logopc.png";
 
-  loadTime = 2000
+  loadTime = 1000
 } else {
   maxRad = 250;
   globeRad = 150;
@@ -143,7 +143,7 @@ if (ww > smallWin) {
   atmosphere.position.z = -1400;
   scene.add(atmosphere);
 
-  loadTime = 2000;
+  loadTime = 1000;
 }
 let myReq;
 function run() {
@@ -348,8 +348,8 @@ function createStrokes(radius) {
 window.addEventListener("resize", () => {
   if (ww > smallWin) {
     maxRad = 500;
-    globeRad = 315;
-    minRad = 315;
+    globeRad = 303;
+    minRad = 303;
     isWindowSmall = false;
   } else {
     maxRad = 250;
