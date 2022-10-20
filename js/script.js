@@ -126,26 +126,26 @@ if (ww > smallWin) {
     })
   );
 
-  const cubeTextureLoader = new THREE.CubeTextureLoader();
-  const environmentMapTexture = cubeTextureLoader.load([
-    "./img/px.png",
-    "./img/nx.png",
-    "./img/py.png",
-    "./img/ny.png",
-    "./img/pz.png",
-    "./img/nz.png",
-  ]);
+  // const cubeTextureLoader = new THREE.CubeTextureLoader();
+  // const environmentMapTexture = cubeTextureLoader.load([
+  //   "./img/px.png",
+  //   "./img/nx.png",
+  //   "./img/py.png",
+  //   "./img/ny.png",
+  //   "./img/pz.png",
+  //   "./img/nz.png",
+  // ]);
 
   /**
    * Scene
    */
-  scene.background = environmentMapTexture;
+  // scene.background = environmentMapTexture;
   atmosphere.position.z = -1400;
   scene.add(atmosphere);
 
   loadTime = 2000;
 }
-
+let myReq;
 function run() {
   for (var x = 0; x < 700; x++) {
     var pos = {
@@ -166,7 +166,7 @@ function run() {
     //   download.addEventListener("click", downloadImage);
     //   document.querySelector(".cr.function").appendChild(download);
 
-    requestAnimationFrame(render);
+    render();
   }
 
   window.addEventListener("resize", onResize);
@@ -184,8 +184,11 @@ function run() {
   var j = 0;
   var isExpanding = true;
   var isCompressed = true;
+  
   var render = function (a) {
-    requestAnimationFrame(render);
+    const requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+                            window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+    myReq = requestAnimationFrame(render);
     // scene.add(sphere);
 
     if (sphere.position.z != 0) {
@@ -360,15 +363,19 @@ window.addEventListener("resize", () => {
     document.querySelector(".socials").style.display = "flex";
     document.querySelector(".floater__btn").style.display = "none";
     document.querySelector(".icon-bg").style.display = "none";
+    document.querySelector(".ms-logo-mob").style.display = "none";
+
     document.querySelector(".title-img").querySelector('img').src = "./img/logopc.png";
 
-    createStrokes(300);
+    // createStrokes(minRad);
   } else {
+    cancelAnimationFrame(myReq);
     document.querySelector(".nav1").style.display = "none";
     document.querySelector(".nav2").style.display = "none";
     document.querySelector(".socials").style.display = "none";
     document.querySelector(".floater__btn").style.display = "flex";
     document.querySelector(".icon-bg").style.display = "flex";
+    document.querySelector(".ms-logo-mob").style.display = "flex";
     document.querySelector(".title-img").querySelector('img').src = "./img/logomobile.png";
 
   }
