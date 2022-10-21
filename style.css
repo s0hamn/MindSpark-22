@@ -4,6 +4,7 @@
   color: rgba(255, 255, 255, 0);
   box-sizing: border-box;
   font-family: "Orbitron", monospace;
+  
 }
 
 @font-face {
@@ -11,10 +12,10 @@
   src: url('./fonts/Orbitron/orbitron-light.otf');
 }
 body {
-  background: white;
+  /* background: white; */
   overflow: hidden;  
   height: --webkit-fill-available;
-
+  background-color: black;
 }
 
 .mob-bg{

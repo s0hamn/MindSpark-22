@@ -146,6 +146,7 @@ if (ww > smallWin) {
   loadTime = 2000;
 }
 let myReq;
+var render;
 function run() {
   for (var x = 0; x < 700; x++) {
     var pos = {
@@ -185,7 +186,7 @@ function run() {
   var isExpanding = true;
   var isCompressed = true;
   
-  var render = function (a) {
+  render  = function (a) {
     const requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
                             window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
     myReq = requestAnimationFrame(render);
@@ -296,6 +297,8 @@ function run() {
 }
 
 run();
+
+var isAnimationCanceled = false;
 function createStrokes(radius) {
   var dots = new THREE.Geometry();
   // Create vertices
@@ -358,6 +361,10 @@ window.addEventListener("resize", () => {
     isWindowSmall = true;
   }
   if (!isWindowSmall) {
+    if(isAnimationCanceled){
+      requestAnimationFrame(render);
+      isAnimationCanceled = false;
+    }
     document.querySelector(".nav1").style.display = "flex";
     document.querySelector(".nav2").style.display = "flex";
     document.querySelector(".socials").style.display = "flex";
@@ -369,7 +376,10 @@ window.addEventListener("resize", () => {
 
     // createStrokes(minRad);
   } else {
-    cancelAnimationFrame(myReq);
+    if(!isAnimationCanceled){
+      cancelAnimationFrame(myReq);
+      isAnimationCanceled = true;
+    }
     document.querySelector(".nav1").style.display = "none";
     document.querySelector(".nav2").style.display = "none";
     document.querySelector(".socials").style.display = "none";
