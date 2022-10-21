@@ -5,6 +5,11 @@
   box-sizing: border-box;
   font-family: "Orbitron", monospace;
 }
+
+@font-face {
+  font-family: Orbitron;
+  src: url('./fonts/Orbitron/orbitron-light.otf');
+}
 body {
   background: black;
   overflow: hidden;  
