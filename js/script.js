@@ -143,7 +143,7 @@ if (ww > smallWin) {
   atmosphere.position.z = -1400;
   scene.add(atmosphere);
 
-  loadTime = 1000;
+  loadTime = 2000;
 }
 let myReq;
 function run() {

@@ -18,6 +18,7 @@ body {
 }
 
 .mob-bg{
+  display: none;
   height: 100vh;
   width: 100vw;
   position: absolute;
@@ -372,6 +373,7 @@ width: 100vw;
 height: 100vh;
 top: 0;
 bottom: 0;
+z-index: 2;
 }
 
 .loading-screen img{
@@ -744,6 +746,7 @@ svg {
 
 
 @media(min-width : 1000px){
+  
 .tagline{
   position: absolute;
   color: white;
@@ -759,7 +762,9 @@ svg {
   canvas{
     z-index: 1;
   }
-  
+  .mob-bg{
+    display: block;
+  }
 .title{
   top: 50%;
     transform: translateY(-50%);
