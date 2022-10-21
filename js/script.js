@@ -46,7 +46,7 @@ loader.crossOrigin = "";
 var loader2 = new THREE.TextureLoader();
 loader2.crossOrigin = "";
 var dotTexture = loader2.load(
-  "./img/dot.png"
+  "./img/dot.webp"
 );
 dotsMaterial = new THREE.PointsMaterial({
   size: 6,
@@ -76,7 +76,7 @@ if (ww > smallWin) {
   minRad = 303;
   isWindowSmall = false;
   material1 = new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load("./img/earth_3.jpg"),
+    map: new THREE.TextureLoader().load("./img/earth_3.webp"),
     transparent: true,
     opacity: 0,
   });
@@ -84,7 +84,7 @@ if (ww > smallWin) {
     new THREE.SphereGeometry(globeRad, 16, 16),
     material1
   );
-  document.querySelector(".title-img").querySelector('img').src = "./img/logopc.png";
+  document.querySelector(".title-img").querySelector('img').src = "./img/logopc.webp";
 
   loadTime = 1000
 } else {
@@ -93,7 +93,7 @@ if (ww > smallWin) {
   minRad = 150;
   isWindowSmall = true;
   material1 = new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load("./img/earth_mob2.jpg"),
+    map: new THREE.TextureLoader().load("./img/earth_mob.webp"),
     opacity: 0,
   });
   sphere = new THREE.Mesh(
@@ -101,7 +101,7 @@ if (ww > smallWin) {
     material1
   );
 
-  document.querySelector(".title-img").src = "./img/logomobile.png";
+  document.querySelector(".title-img").src = "./img/logomobile.webp";
 
   atmosphere = new THREE.Mesh(
     new THREE.SphereGeometry(170, 16, 16),
@@ -365,7 +365,7 @@ window.addEventListener("resize", () => {
     document.querySelector(".icon-bg").style.display = "none";
     document.querySelector(".ms-logo-mob").style.display = "none";
 
-    document.querySelector(".title-img").querySelector('img').src = "./img/logopc.png";
+    document.querySelector(".title-img").querySelector('img').src = "./img/logopc.webp";
 
     // createStrokes(minRad);
   } else {
@@ -376,7 +376,7 @@ window.addEventListener("resize", () => {
     document.querySelector(".floater__btn").style.display = "flex";
     document.querySelector(".icon-bg").style.display = "flex";
     document.querySelector(".ms-logo-mob").style.display = "flex";
-    document.querySelector(".title-img").querySelector('img').src = "./img/logomobile.png";
+    document.querySelector(".title-img").querySelector('img').src = "./img/logomobile.webp";
 
   }
 });

@@ -520,11 +520,6 @@ var OrbitControls = function ( object, domElement ) {
 
 		
 		rotateEnd.set( event.clientX, event.clientY );
-		document.addEventListener("mouseleave", (event) => {  
-			
-			  console.log("I'm out");  
-			  
-		  });
 		rotateDelta.subVectors( rotateEnd, rotateStart ).multiplyScalar( scope.rotateSpeed );
 
 		var element = scope.domElement;
