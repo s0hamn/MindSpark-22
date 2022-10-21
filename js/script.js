@@ -298,7 +298,6 @@ function run() {
 
 run();
 
-var isAnimationCanceled = false;
 function createStrokes(radius) {
   var dots = new THREE.Geometry();
   // Create vertices
