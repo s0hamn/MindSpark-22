@@ -32,7 +32,7 @@ renderer = new THREE.WebGLRenderer({
 renderer.setPixelRatio(window.devicePixelRatio > 1 ? 2 : 1);
 
 renderer.setSize(ww, wh);
-renderer.setClearColor(0x000000);
+renderer.setClearColor(0x000000, 0);
 
 scene = new THREE.Scene();
 scene.fog = new THREE.Fog(0x000000, 800, 2500);

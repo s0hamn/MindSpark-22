@@ -11,12 +11,21 @@
   src: url('./fonts/Orbitron/orbitron-light.otf');
 }
 body {
-  background: black;
+  background: white;
   overflow: hidden;  
   height: --webkit-fill-available;
 
 }
 
+.mob-bg{
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url('./img/mob_bg.png');
+  z-index: 1;
+}
 html{
   height: --webkit-fill-available;
 }
@@ -26,6 +35,7 @@ canvas {
   top: 0;
   left: 0;
   z-index: 0;
+  background: transparent;
 }
 .cr.function {
   position: relative;
