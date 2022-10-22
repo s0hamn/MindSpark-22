@@ -680,11 +680,10 @@ svg {
 @media(min-width : 1000px){
   
 .tagline{
-  position: absolute;
   color: white;
   display: none;
   animation: opacity-anim 1s, glitch 1s 1s;
-  top: 110%;
+  margin-top: 3vw;
   padding: 0 10vw;
   text-align: center;
   
