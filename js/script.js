@@ -101,7 +101,7 @@ if (ww > smallWin) {
         material1
     );
 
-    document.querySelector(".title-img").src = "./img/logo mob.png";
+    document.querySelector(".title-img").querySelector('img').src = "./img/logo mob.png";
 
     atmosphere = new THREE.Mesh(
         new THREE.SphereGeometry(170, 16, 16),
