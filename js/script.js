@@ -391,6 +391,7 @@ window.addEventListener("resize", () => {
         document.querySelector(".ms-logo-mob").style.display = "flex";
         document.querySelector(".title-img").querySelector('img').src = "./img/title logo mob.svg";
         // document.querySelector(".tagline").display = "flex";
+
         document.querySelector(".tagline").style.opacity = 1;
 
     }
