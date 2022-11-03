@@ -389,7 +389,7 @@ window.addEventListener("resize", () => {
         document.querySelector(".floater__btn").style.display = "flex";
         document.querySelector(".icon-bg").style.display = "flex";
         document.querySelector(".ms-logo-mob").style.display = "flex";
-        document.querySelector(".title-img").querySelector('img').src = "./img/logo mob.svg";
+        document.querySelector(".title-img").querySelector('img').src = "./img/Web_Header-02-removebg-preview.png";
         // document.querySelector(".tagline").display = "flex";
 
         document.querySelector(".tagline").style.opacity = 1;
