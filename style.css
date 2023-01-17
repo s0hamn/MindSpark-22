@@ -3,7 +3,7 @@
     padding: 0;
     color: rgba(255, 255, 255, 0);
     box-sizing: border-box;
-    font-family: "Orbitron", monospace;
+    font-family: 'Jost', sans-serif;
 }
 
 @font-face {
@@ -67,12 +67,11 @@ canvas {
     z-index: 1;
     color: white;
     font-size: 1em;
-    /* top: 50%;
-    transform: translateY(-50%); */
-    margin-top: -15vh;
+    top: 30%;
 }
 
 .title-img img {
+    filter: drop-shadow(5px 5px 5px black);
     width: 60%;
     margin: auto;
     display: none;
@@ -188,6 +187,7 @@ canvas {
     z-index: 2;
     color: #6adefa;
     font-weight: 400;
+    font-size: 1.2rem;
 }
 
 .link-row a:hover {
@@ -665,6 +665,9 @@ svg {
         height: 0px;
         padding: 0 10vw;
         text-align: center;
+        font-family: 'Jost', sans-serif;
+        font-size: 1.5rem;
+        text-shadow: 2px 2px 4px #000000;
     }
 }
 
@@ -690,6 +693,7 @@ svg {
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-bottom: 50px;
     }
     .title-img img {
         width: 90vw;
@@ -727,5 +731,6 @@ svg {
         font-size: 0.9em;
         text-align: center;
         opacity: 0;
+        text-shadow: 2px 2px 4px #000000;
     }
 }

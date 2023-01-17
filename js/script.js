@@ -84,7 +84,7 @@ if (ww > smallWin) {
         new THREE.SphereGeometry(globeRad, 16, 16),
         material1
     );
-    document.querySelector(".title-img").querySelector('img').src = "./img/logo pc.png";
+    document.querySelector(".title-img").querySelector('img').src = "./img/Web Header-03.png";
 
     loadTime = 1000
 } else {
@@ -101,7 +101,7 @@ if (ww > smallWin) {
         material1
     );
 
-    document.querySelector(".title-img").querySelector('img').src = "./img/Web_Header-02-removebg-preview.png";
+    document.querySelector(".title-img").querySelector('img').src = "./img/Web Header-04.png";
 
     atmosphere = new THREE.Mesh(
         new THREE.SphereGeometry(170, 16, 16),
@@ -375,7 +375,7 @@ window.addEventListener("resize", () => {
         document.querySelector(".icon-bg").style.display = "none";
         document.querySelector(".ms-logo-mob").style.display = "none";
 
-        document.querySelector(".title-img").querySelector('img').src = "./img/logo pc.png";
+        document.querySelector(".title-img").querySelector('img').src = "./img/Web Header-03.png";
 
         // createStrokes(minRad);
     } else {
@@ -389,7 +389,7 @@ window.addEventListener("resize", () => {
         document.querySelector(".floater__btn").style.display = "flex";
         document.querySelector(".icon-bg").style.display = "flex";
         document.querySelector(".ms-logo-mob").style.display = "flex";
-        document.querySelector(".title-img").querySelector('img').src = "./img/Web_Header-02-removebg-preview.png";
+        document.querySelector(".title-img").querySelector('img').src = "./img/Web Header-04.png";
         // document.querySelector(".tagline").display = "flex";
 
         document.querySelector(".tagline").style.opacity = 1;
